@@ -124,7 +124,7 @@ const EnhancedWhyChooseUs = () => {
               ].map((item, index) => (
                 <div key={index} className="flex flex-col gap-4">
                   <div className="flex items-center gap-3">
-                    <span className="text-primary text-2xl">✓</span>
+                    <span className="text-white text-2xl">✓</span>
                     <h4 className="text-xl font-semibold text-white">{item.title}</h4>
                   </div>
                   <p className="desc text-tertiary">{item.desc}</p>

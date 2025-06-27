@@ -4,7 +4,7 @@ import { FaPhone } from "react-icons/fa";
 import { companyDetails } from "../../constant";
 import { IoMail } from "react-icons/io5";
 import { FaLocationDot } from "react-icons/fa6";
-import { BsFacebook, BsInstagram, BsLinkedin, BsTwitter } from "react-icons/bs";
+import { BsFacebook, BsInstagram, BsLinkedin, BsTwitter, BsYoutube } from "react-icons/bs";
 import toast from "react-hot-toast";
 import { SpinnerContext } from "../SpinnerContext";
 import { useForm } from "react-hook-form";
@@ -166,6 +166,14 @@ const ContactForm = () => {
                     className="w-10 h-10 rounded-full bg-accent2 flex justify-center items-center hover:bg-accent3 transition-colors duration-300"
                   >
                     <BsInstagram className="text-lg text-white" />
+                  </Link>
+                  <Link
+                    to={companyDetails.youtube}
+                    rel="noopener noreferrer"
+                    target="_blank"
+                    className="w-10 h-10 rounded-full bg-accent2 flex justify-center items-center hover:bg-accent3 transition-colors duration-300"
+                  >
+                    <BsYoutube className="text-lg text-white" />
                   </Link>
                 </div>
               </div>

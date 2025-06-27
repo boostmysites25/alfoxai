@@ -1,5 +1,5 @@
 import React from "react";
-import { BsFacebook, BsInstagram, BsLinkedin, BsTwitter } from "react-icons/bs";
+import { BsFacebook, BsInstagram, BsLinkedin, BsTwitter, BsYoutube } from "react-icons/bs";
 import { companyDetails, logoImg, routes } from "../../constant";
 import { Link } from "react-router-dom";
 
@@ -51,6 +51,14 @@ const WebsiteFooter = () => {
                 className="bg-accent1 p-2 rounded-full hover:bg-accent3 hover:text-primary transition-all duration-300"
               >
                 <BsInstagram className="text-lg" />
+              </Link>
+              <Link
+                to={companyDetails.youtube}
+                rel="noopener noreferrer"
+                target="_blank"
+                className="bg-accent1 p-2 rounded-full hover:bg-accent3 hover:text-primary transition-all duration-300"
+              >
+                <BsYoutube className="text-lg" />
               </Link>
             </div>
           </div>

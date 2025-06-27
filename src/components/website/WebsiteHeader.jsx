@@ -50,18 +50,21 @@ const WebsiteHeader = () => {
               alt="logo"
             />
           </Link>
-          <div className="lg:flex items-center gap-8 hidden">
-            {routes.slice(0, 3).map(({ name, path }) => (
-              <Link
-                to={`${path}`}
-                className={`link text-sm font-medium ${
-                  pathname === `${path}` && "active-link"
-                }`}
-                key={path}
-              >
-                {name}
-              </Link>
-            ))}
+          <div className="lg:flex items-center gap-6 hidden">
+            {routes
+              .slice(0, routes.length - 1)
+              .filter((option) => !option.path.includes(":"))
+              .map(({ name, path }) => (
+                <Link
+                  to={`${path}`}
+                  className={`link text-sm font-medium ${
+                    pathname === `${path}` && "active-link"
+                  }`}
+                  key={path}
+                >
+                  {name}
+                </Link>
+              ))}
           </div>
         </div>
         <div className="hidden lg:block">
@@ -87,16 +90,19 @@ const WebsiteHeader = () => {
             </button>
           </div>
           <div className="flex flex-col gap-8 mt-10">
-            {routes.map(({ name, path }) => (
-              <Link
-                onClick={() => setIsOpen(false)}
-                key={path}
-                className="text-2xl text-white font-medium transition-all duration-300 hover:pl-2 hover:text-highlight"
-                to={path}
-              >
-                {name}
-              </Link>
-            ))}
+            {routes
+
+              .filter((option) => !option.path.includes(":"))
+              .map(({ name, path }) => (
+                <Link
+                  onClick={() => setIsOpen(false)}
+                  key={path}
+                  className="text-2xl text-white font-medium transition-all duration-300 hover:pl-2 hover:text-highlight"
+                  to={path}
+                >
+                  {name}
+                </Link>
+              ))}
           </div>
         </Drawer>
         <div

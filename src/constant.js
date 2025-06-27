@@ -56,6 +56,10 @@ const Home = lazy(() => import("./pages/website/Home"));
 const Services = lazy(() => import("./pages/website/Services"));
 const ContactUs = lazy(() => import("./pages/website/ContactUs"));
 const AboutUs = lazy(() => import("./pages/website/AboutUs"));
+const Portfolio = lazy(() => import("./pages/website/Portfolio"));
+const Careers = lazy(() => import("./pages/website/Careers"));
+const Blogs = lazy(() => import("./pages/website/Blogs"));
+const BlogPost = lazy(() => import("./pages/website/BlogPost"));
 
 export {
   logoImg,
@@ -90,13 +94,15 @@ export {
 export const companyDetails = {
   phone: "+91-9880636948",
   whatsapp: "919880636948",
-  email: "info@alfoxai.com",
+  email: "mpranavprem@gmail.com",
+  // email: "info@alfoxai.com",
   address:
     "WeWork, Salarpuria Symbiosis, Bannerghatta Road, Venugopal Reddy Layout, Arekere, Bengaluru, Karnataka - 560076",
-  twitter: "",
-  linkedin: "",
-  instagram: "",
-  facebook: "",
+  twitter: "https://x.com/Alfox_ai?t=XRhKLlmuBrsCsMXmb8yW2g&s=08",
+  linkedin: "https://www.linkedin.com/company/alfox-ai/",
+  instagram: "https://www.instagram.com/alfox.ai?igsh=cTNwdmxjbmMzNjF6",
+  facebook: "https://www.facebook.com/share/1J9GcHPmJx/",
+  youtube:"https://www.youtube.com/channel/UCo-nq9CzM1ANR8wqANnmG4w"
 };
 
 // website routes
@@ -115,6 +121,26 @@ export const routes = [
     name: "Services",
     path: "/services",
     component: <Services />,
+  },
+  {
+    name: "Portfolio",
+    path: "/portfolio",
+    component: <Portfolio />,
+  },
+  {
+    name: "Careers",
+    path: "/careers",
+    component: <Careers />,
+  },
+  {
+    name: "Blogs",
+    path: "/blogs",
+    component: <Blogs />,
+  },
+  {
+    name: "Blog Post",
+    path: "/blogs/:slug",
+    component: <BlogPost />,
   },
   {
     name: "Contact Us",
@@ -769,30 +795,24 @@ export const allServices = [
 export const webPortfolio = [
   {
     id: 1,
-    img: require("./assets/images/portfolio/web-development/5ghomes.webp"),
-    title: "5g Homes",
-    link: "https://5ghighspeedinternet.co",
-  },
-  {
-    id: 2,
     img: require("./assets/images/portfolio/web-development/cold-creekcap.webp"),
     title: "Cold Creekcap",
     link: "https://www.coldcreekcap.com",
   },
   {
-    id: 3,
+    id: 2,
     img: require("./assets/images/portfolio/web-development/think-reality.webp"),
     title: "Think Reality",
     link: "https://thinkrealty.ae",
   },
   {
-    id: 4,
+    id: 3,
     img: require("./assets/images/portfolio/web-development/akash-mega-mart.webp"),
     title: "Akash Mega Mart",
     link: "https://akashmegamart.com/",
   },
   {
-    id: 5,
+    id: 4,
     img: require("./assets/images/portfolio/web-development/midwam.webp"),
     title: "Midwam",
     link: "https://www.midwam.com/en/about",

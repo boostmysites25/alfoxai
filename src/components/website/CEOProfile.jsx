@@ -100,6 +100,20 @@ const CEOProfile = () => {
                   </span>
                   Founder & CEO, ALFOX AI
                 </h3>
+                
+                <div className="mt-3 mb-4">
+                  <div className="flex flex-wrap gap-2 mb-3">
+                    <span className="bg-accent2/80 px-3 py-1 rounded-full text-xs text-white font-medium">AI Expert</span>
+                    <span className="bg-accent2/80 px-3 py-1 rounded-full text-xs text-white font-medium">Tech Visionary</span>
+                    <span className="bg-accent2/80 px-3 py-1 rounded-full text-xs text-white font-medium">Startup Mentor</span>
+                  </div>
+                  <p className="text-tertiary desc leading-relaxed">
+                    I wasn't born with privilege. I built every skill from scratch and earned every opportunity through grit. To anyone starting from nothing — <span className="text-white font-medium">Your background doesn't limit you. Your mindset shapes your future.</span> Keep going. Build. Believe.
+                  </p>
+                  <p className="text-primary font-semibold text-sm mt-2">
+                    Let's Build The Future Together.
+                  </p>
+                </div>
 
                 <blockquote className="relative mt-3 mb-2">
                   <div className="absolute -left-2 -top-2 text-5xl text-accent3/70 leading-none">

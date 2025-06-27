@@ -39,6 +39,7 @@ export default function App() {
           {/* Website Pages */}
           {routes.map(({ component, name, path }, index) => (
             <Route
+              key={path}
               path={path}
               element={
                 <>

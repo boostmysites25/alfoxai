@@ -45,7 +45,7 @@ body {
     @apply font-raleway text-2xl md:text-3xl font-semibold leading-tight tracking-tight;
   }
   .desc {
-    @apply font-inter font-light text-tertiary leading-relaxed;
+    @apply font-poppins font-light text-tertiary leading-relaxed;
   }
   .active-link {
     @apply text-highlight font-bold relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-full after:h-[2px] after:bg-highlight;

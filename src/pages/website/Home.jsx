@@ -11,6 +11,7 @@ import AboutCompany from "../../components/website/AboutCompany";
 import Featured from "../../components/common/Featured";
 import CEOProfile from "../../components/website/CEOProfile";
 import BrandLogos from "../../components/common/BrandLogos";
+import LandingPagesShowcase from "../../components/website/LandingPagesShowcase";
 
 const Home = () => {
   return (
@@ -51,6 +52,7 @@ const Home = () => {
       </div>
 
       <AboutCompany />
+      <LandingPagesShowcase />
       <OurServices length={3} />
       <WhyChooseUs />
       <UnlockEfficiency />

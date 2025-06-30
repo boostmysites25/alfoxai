@@ -122,6 +122,10 @@ export const routes = [
     component: <Services />,
   },
   {
+    name: "Our Products",
+    path: "",
+  },
+  {
     name: "Portfolio",
     path: "/portfolio",
     component: <Portfolio />,

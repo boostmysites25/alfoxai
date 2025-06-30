@@ -39,10 +39,10 @@ const Home = () => {
             <h1 className="heading-1">Design. Develop. Deliver.</h1>
             <p className="desc">
               ALFOX AI is a Software AI company, we are providing both services
-              and Products Based. We specialize in crafting exceptional mobile
-              applications and web solutions that empower businesses to reach
-              their digital potential. Our expert team turns your vision into
-              reality with precision and innovation.
+              and Products Based. We specialize in crafting exceptional
+              solutions that empower businesses to reach their digital
+              potential. Our expert team turns your vision into reality with
+              precision and innovation.
             </p>
             <Link to="/contact-us" className="primary-btn mt-2">
               Schedule Your Strategy Session

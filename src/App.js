@@ -13,7 +13,8 @@ import SpinnerContextProvider, {
 } from "./components/SpinnerContext";
 import { Toaster } from "react-hot-toast";
 import ScrollToTop from "./components/common/ScrollToTop";
-// import TawkMessengerReact from "@tawk.to/tawk-messenger-react";
+import TawkToChat from "./components/common/TawkToChat";
+import WhatsappIcon from "./components/common/WhatsappIcon";
 
 const LandingPage = lazy(() => import("./pages/landingPages/LandingPage"));
 const Thankyou = lazy(() => import("./pages/Thankyou"));
@@ -21,7 +22,6 @@ const Thankyou = lazy(() => import("./pages/Thankyou"));
 AOS.init({
   once: true,
   duration: 500,
-  offset: -200,
 });
 
 export default function App() {
@@ -31,10 +31,8 @@ export default function App() {
       <Suspense fallback={<LoadingSpinner />}>
         <Toaster />
         <ScrollToTop />
-        {/* <TawkMessengerReact
-          propertyId="67606db7af5bfec1dbdcff03"
-          widgetId="1if8ap5rc"
-        /> */}
+        <WhatsappIcon />
+        <TawkToChat />
         <Routes>
           {/* Website Pages */}
           {routes.map(({ component, name, path }, index) => (

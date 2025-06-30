@@ -1,5 +1,11 @@
 import React from "react";
-import { BsFacebook, BsInstagram, BsLinkedin, BsTwitter, BsYoutube } from "react-icons/bs";
+import {
+  BsFacebook,
+  BsInstagram,
+  BsLinkedin,
+  BsTwitter,
+  BsYoutube,
+} from "react-icons/bs";
 import { companyDetails, logoImg, routes } from "../../constant";
 import { Link } from "react-router-dom";
 
@@ -67,29 +73,31 @@ const WebsiteFooter = () => {
             <h6 className="font-medium text-lg mb-2 text-highlight">
               Quick Links
             </h6>
-            {routes.map(({ name, path }) => (
-              <Link
-                key={path}
-                to={path}
-                className="text-tertiary text-sm hover:text-highlight transition-all duration-300 hover:translate-x-1 flex items-center gap-2"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-3 w-3"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
+            {routes
+              .filter((route) => !route.path.includes(":"))
+              .map(({ name, path }) => (
+                <Link
+                  key={path}
+                  to={path}
+                  className="text-tertiary text-sm hover:text-highlight transition-all duration-300 hover:translate-x-1 flex items-center gap-2"
                 >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M9 5l7 7-7 7"
-                  />
-                </svg>
-                {name}
-              </Link>
-            ))}
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-3 w-3"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M9 5l7 7-7 7"
+                    />
+                  </svg>
+                  {name}
+                </Link>
+              ))}
           </div>
 
           <div className="flex flex-col gap-4">

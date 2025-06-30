@@ -16,7 +16,7 @@ const Blogs = () => {
   const handleCategoryChange = (category) => {
     setIsLoading(true);
     setSelectedCategory(category);
-    
+
     // Simulate loading for smoother transitions
     setTimeout(() => {
       setIsLoading(false);
@@ -68,9 +68,12 @@ const Blogs = () => {
               >
                 {/* Gradient border effect */}
                 <div className="absolute -inset-[1px] bg-gradient-to-r from-white/10 to-white/20 rounded-lg blur-[1px] opacity-70 group-hover:opacity-100 transition-opacity duration-300"></div>
-                
+
                 {/* Card content */}
-                <div className="card hover-lift relative h-full flex flex-col cursor-pointer" onClick={() => handleBlogSelect(blog)}>
+                <div
+                  className="card hover-lift relative h-full flex flex-col cursor-pointer"
+                  onClick={() => handleBlogSelect(blog)}
+                >
                   <div className="aspect-square overflow-hidden rounded-t-lg">
                     <img
                       src={blog.image}
@@ -114,34 +117,9 @@ const Blogs = () => {
             </p>
           </div>
         )}
-
-        {/* Newsletter Subscription */}
-        {(
-          <div className="mt-20 relative">
-            <div className="absolute -inset-1 bg-gradient-to-r from-white/5 to-white/10 rounded-2xl blur-lg opacity-70"></div>
-            <div className="relative bg-accent1/80 backdrop-blur-sm rounded-2xl p-8 md:p-12 shadow-card">
-              <h3 className="text-2xl font-bold mb-4 text-gradient">Subscribe to Our Newsletter</h3>
-              <p className="text-tertiary mb-6 max-w-2xl mx-auto">
-                Stay updated with the latest insights, industry trends, and company news. 
-                We promise not to spam your inbox!
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
-                <input 
-                  type="email" 
-                  placeholder="Your email address" 
-                  className="flex-grow px-4 py-2 rounded-md bg-accent2/50 border border-white/10 text-white focus:outline-none focus:ring-2 focus:ring-white/20"
-                />
-                <button className="primary-btn whitespace-nowrap">
-                  Subscribe
-                </button>
-              </div>
-            </div>
-          </div>
-        )}
       </div>
     </>
   );
 };
 
 export default Blogs;
- 

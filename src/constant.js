@@ -94,15 +94,14 @@ export {
 export const companyDetails = {
   phone: "+91-9880636948",
   whatsapp: "919880636948",
-  email: "mpranavprem@gmail.com",
-  // email: "info@alfoxai.com",
+  email: "info@alfoxai.com",
   address:
     "WeWork, Salarpuria Symbiosis, Bannerghatta Road, Venugopal Reddy Layout, Arekere, Bengaluru, Karnataka - 560076",
   twitter: "https://x.com/Alfox_ai?t=XRhKLlmuBrsCsMXmb8yW2g&s=08",
   linkedin: "https://www.linkedin.com/company/alfox-ai/",
   instagram: "https://www.instagram.com/alfox.ai?igsh=cTNwdmxjbmMzNjF6",
   facebook: "https://www.facebook.com/share/1J9GcHPmJx/",
-  youtube:"https://www.youtube.com/channel/UCo-nq9CzM1ANR8wqANnmG4w"
+  youtube: "https://www.youtube.com/channel/UCo-nq9CzM1ANR8wqANnmG4w",
 };
 
 // website routes

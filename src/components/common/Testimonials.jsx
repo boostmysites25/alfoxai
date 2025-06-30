@@ -1,10 +1,13 @@
 import React from "react";
 import { useKeenSlider } from "keen-slider/react";
 import profileImg1 from "../../assets/images/profileimg-1.jpg";
+import profileImg2 from "../../assets/images/profileimg-2.png";
+import profileImg3 from "../../assets/images/profileimg-3.png";
 import {
   IoArrowBackCircleOutline,
   IoArrowForwardCircleOutline,
 } from "react-icons/io5";
+import { RxAvatar } from "react-icons/rx";
 
 const reviews = [
   {
@@ -103,7 +106,7 @@ const reviews = [
     profileImg: profileImg1,
     name: "Oliver Grant",
     role: "Head of Product | Zenith Software",
-    desc: "Best UX/UI Design Partners We've Worked With. Their UX/UI design wasn't just beautiful�it increased our user engagement by making every step intuitive and easy. Fantastic team.",
+    desc: "Best UX/UI Design Partners We've Worked With. Their UX/UI design wasn't just beautiful it increased our user engagement by making every step intuitive and easy. Fantastic team.",
   },
 ];
 
@@ -190,14 +193,15 @@ const Testimonials = () => {
               key={item.id}
               className="keen-slider__slide min-h-[18rem] justify-between text-white p-7 bg-[#101010] rounded-xl flex flex-col gap-4"
             >
-              <p className="italic desc">{item.desc}</p>
+              <p className="italic desc">" {item.desc} "</p>
               <div className="flex flex-col gap-2">
                 <div className="flex gap-2">
-                  <img
+                  {/* <img
                     src={item.profileImg}
                     alt={item.name}
                     className="h-[3rem] w-[3rem] min-w-[3rem] aspect-square rounded-full object-cover"
-                  />
+                  /> */}
+                  <RxAvatar className="h-[3rem] w-[3rem] min-w-[3rem] aspect-square rounded-full text-tertiary/50" />
                   <div className="flex flex-col h-full">
                     <p className="font-medium">{item.name}</p>
                     <p className="text-sm">{item.role}</p>

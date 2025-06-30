@@ -25,8 +25,7 @@ const EndlessOpportunitiesSection = () => {
       repeat: -1,
       duration: 1,
       ease: "back.inOut",
-    })
-    .to("#from-left", {
+    }).to("#from-left", {
       translateX: -300,
       yoyo: true,
       repeat: -1,
@@ -41,10 +40,13 @@ const EndlessOpportunitiesSection = () => {
   }, []);
   return (
     <>
-      <section className="wrapper flex flex-col items-center justify-center py-14 text-center md:py-20 text-white">
-        <div data-aos="fade-up">
+      <section
+        data-aos="fade-up"
+        className="wrapper flex flex-col items-center justify-center py-14 text-center md:py-20 text-white"
+      >
+        <div>
           <div className="flex justify-center flex-col">
-            <div data-aos="fade-up" className="flex md:-translate-x-[30%]">
+            <div className="flex md:-translate-x-[30%]">
               <h2 className="text-[1rem] sm:text-3xl text-end font-raleway">
                 One <br />
                 Solution
@@ -53,10 +55,7 @@ const EndlessOpportunitiesSection = () => {
                 Limitless
               </h2>
             </div>
-            <h2
-              data-aos="fade-up"
-              className="text-5xl sm:text-7xl md:translate-x-[30%] font-raleway font-medium"
-            >
+            <h2 className="text-5xl sm:text-7xl md:translate-x-[30%] font-raleway font-medium">
               Potential
             </h2>
           </div>
@@ -104,26 +103,6 @@ const EndlessOpportunitiesSection = () => {
                   alt=""
                 />
               </div>
-              {/* <img
-                src={endlessOpportunitiesImg1}
-                className="h-[4rem] md:h-[7rem] object-cover rounded-full"
-                alt=""
-              />
-              <img
-                src={endlessOpportunitiesImg2}
-                className="h-[4rem] md:h-[7rem] object-cover rounded-full"
-                alt=""
-              />
-              <img
-                src={endlessOpportunitiesImg3}
-                className="h-[4rem] md:h-[7rem] object-cover rounded-full"
-                alt=""
-              />
-              <img
-                src={endlessOpportunitiesImg2}
-                className="h-[4rem] md:h-[7rem] object-cover rounded-full"
-                alt=""
-              /> */}
             </div>
 
             <div
@@ -165,26 +144,6 @@ const EndlessOpportunitiesSection = () => {
                   alt=""
                 />
               </div>
-              {/* <img
-                src={endlessOpportunitiesImg3}
-                className="h-[4rem] md:h-[7rem] object-cover rounded-full"
-                alt=""
-              />
-              <img
-                src={endlessOpportunitiesImg2}
-                className="h-[4rem] md:h-[7rem] object-cover rounded-full"
-                alt=""
-              />
-              <img
-                src={endlessOpportunitiesImg3}
-                className="h-[4rem] md:h-[7rem] object-cover rounded-full"
-                alt=""
-              />
-              <img
-                src={endlessOpportunitiesImg1}
-                className="h-[4rem] md:h-[7rem] object-cover rounded-full"
-                alt=""
-              /> */}
             </div>
           </div>
         </div>

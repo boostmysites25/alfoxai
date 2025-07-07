@@ -92,7 +92,7 @@ export {
 
 // company details
 export const companyDetails = {
-  phone: "+91-9880636948",
+  phone: "+919880636948",
   whatsapp: "919880636948",
   email: "info@alfoxai.com",
   address:

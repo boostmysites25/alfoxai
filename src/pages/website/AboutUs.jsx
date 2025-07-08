@@ -15,10 +15,21 @@ import { ReactComponent as Icon3 } from "../../assets/svgs/Scalability.svg";
 import Featured from "../../components/common/Featured";
 import ExtendedAboutUs from "../../components/website/ExtendedAboutUs";
 import CEOProfile from "../../components/website/CEOProfile";
+import { Helmet } from "react-helmet";
 
 const AboutUs = () => {
   return (
     <>
+      <Helmet>
+        <title>About Us | Alfox AI</title>
+        <meta name="description" content="Learn more about ALFOX AI, our mission, vision, and how we drive digital innovation for businesses worldwide." />
+        <link rel="canonical" href="https://www.alfoxai.com/about-us" />
+        <meta property="og:title" content="About Us | Alfox AI" />
+        <meta property="og:description" content="Learn more about ALFOX AI, our mission, vision, and how we drive digital innovation for businesses worldwide." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://www.alfoxai.com/about-us" />
+        <meta property="og:image" content="/logo.png" />
+      </Helmet>
       <div
         data-aos="fade-down"
         className="h-[40vh] sm:h-[55vh] md:h-[70vh] relative"

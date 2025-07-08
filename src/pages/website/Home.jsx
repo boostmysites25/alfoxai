@@ -12,10 +12,21 @@ import Featured from "../../components/common/Featured";
 import CEOProfile from "../../components/website/CEOProfile";
 import BrandLogos from "../../components/common/BrandLogos";
 import LandingPagesShowcase from "../../components/website/LandingPagesShowcase";
+import { Helmet } from "react-helmet";
 
 const Home = () => {
   return (
     <>
+      <Helmet>
+        <title>Alfox AI - Home</title>
+        <meta name="description" content="ALFOX AI is a Software AI company providing both services and products. We craft exceptional solutions to empower businesses in their digital journey." />
+        <link rel="canonical" href="https://www.alfoxai.com/" />
+        <meta property="og:title" content="Alfox AI - Home" />
+        <meta property="og:description" content="ALFOX AI is a Software AI company providing both services and products. We craft exceptional solutions to empower businesses in their digital journey." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://www.alfoxai.com/" />
+        <meta property="og:image" content="/logo.png" />
+      </Helmet>
       <div id="banner" className="h-screen relative">
         <ReactPlayer
           url={homeBannerVideo}

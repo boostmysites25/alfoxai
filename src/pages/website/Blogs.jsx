@@ -1,17 +1,32 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useQuery } from "@tanstack/react-query";
 import Banner from "../../components/website/Banner";
-import { blogPosts, categories } from "../../data/blogs";
+import { getBlogs } from "../../utils/api";
 
 const Blogs = () => {
   const navigate = useNavigate();
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [isLoading, setIsLoading] = useState(false);
 
+  // Fetch blogs using TanStack Query
+  const { data: blogsData, isLoading: blogsLoading, error } = useQuery({
+    queryKey: ['blogs'],
+    queryFn: getBlogs,
+    retry: 2,
+    retryDelay: 1000,
+  });
+
+  // Extract blogs from the API response with fallback
+  const blogPosts = blogsData?.blogs || [];
+  
+  // Get unique categories from the blogs
+  const categories = ["All", ...new Set(blogPosts.map(blog => blog.categoryId?.name).filter(Boolean))];
+
   const filteredBlogs =
     selectedCategory === "All"
       ? blogPosts
-      : blogPosts.filter((blog) => blog.category === selectedCategory);
+      : blogPosts.filter((blog) => blog.categoryId?.name === selectedCategory);
 
   const handleCategoryChange = (category) => {
     setIsLoading(true);
@@ -24,9 +39,49 @@ const Blogs = () => {
   };
 
   const handleBlogSelect = (blog) => {
-    // Navigate to the blog post page using the blog ID as the slug
-    navigate(`/blogs/${blog.id}`);
+    // Navigate to the blog post page using the blog slug
+    navigate(`/blogs/${blog.slug}`);
   };
+
+  // Format date for display
+  const formatDate = (dateString) => {
+    if (!dateString) return 'No date';
+    
+    try {
+      const date = new Date(dateString);
+      return date.toLocaleDateString('en-US', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+      });
+    } catch (error) {
+      return 'Invalid date';
+    }
+  };
+
+  if (error) {
+    return (
+      <>
+        <Banner page="Our Blogs" />
+        <div className="wrapper py-16">
+          <div className="text-center py-16">
+            <h3 className="text-xl font-medium text-white mb-4">
+              Error loading blogs
+            </h3>
+            <p className="text-tertiary mb-6">
+              {error.message || 'Please try again later or contact support if the problem persists.'}
+            </p>
+            <button
+              onClick={() => window.location.reload()}
+              className="px-6 py-2 bg-accent2 text-white rounded-lg hover:bg-accent2/80 transition-colors"
+            >
+              Try Again
+            </button>
+          </div>
+        </div>
+      </>
+    );
+  }
 
   return (
     <>
@@ -53,7 +108,7 @@ const Blogs = () => {
           </div>
         </div>
 
-        {isLoading ? (
+        {(blogsLoading || isLoading) ? (
           <div className="flex justify-center items-center py-20">
             <div className="loader"></div>
           </div>
@@ -61,7 +116,7 @@ const Blogs = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredBlogs.map((blog, index) => (
               <div
-                key={blog.id}
+                key={blog._id}
                 className="group relative"
                 data-aos="fade-up"
                 data-aos-delay={(index % 6) * 100}
@@ -76,15 +131,18 @@ const Blogs = () => {
                 >
                   <div className="aspect-square overflow-hidden rounded-t-lg">
                     <img
-                      src={blog.image}
-                      alt={blog.title}
+                      src={blog.imageUrl}
+                      alt={blog.imageAlt || blog.title}
                       className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                      onError={(e) => {
+                        e.target.src = 'https://via.placeholder.com/400x400?text=No+Image';
+                      }}
                     />
                   </div>
                   <div className="p-6 flex flex-col flex-grow">
                     <div className="mb-3">
                       <span className="inline-block px-3 py-1 text-sm text-white bg-accent2 rounded-full">
-                        {blog.category}
+                        {blog.categoryId?.name || 'Uncategorized'}
                       </span>
                     </div>
                     <h3 className="text-xl text-white font-bold mb-3 line-clamp-2">
@@ -94,9 +152,11 @@ const Blogs = () => {
                       {blog.excerpt}
                     </p>
                     <div className="flex justify-between items-center mt-auto">
-                      <span className="text-sm text-tertiary">{blog.date}</span>
                       <span className="text-sm text-tertiary">
-                        By {blog.author}
+                        {formatDate(blog.publishDate)}
+                      </span>
+                      <span className="text-sm text-tertiary">
+                        By {blog.author?.name || blog.authorId?.name || 'Unknown'}
                       </span>
                     </div>
                   </div>
@@ -107,7 +167,7 @@ const Blogs = () => {
         )}
 
         {/* No Results Message */}
-        {filteredBlogs.length === 0 && !isLoading && (
+        {filteredBlogs.length === 0 && !blogsLoading && !isLoading && (
           <div className="text-center py-16">
             <h3 className="text-xl font-medium text-white">
               No articles found for this category.

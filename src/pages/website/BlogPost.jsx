@@ -1,6 +1,7 @@
 import React from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
+import { Helmet } from "react-helmet";
 import Banner from "../../components/website/Banner";
 import { getBlogBySlug, getBlogs } from "../../utils/api";
 
@@ -62,6 +63,11 @@ const BlogPost = () => {
   if (blogError && blogError.response?.status === 404) {
     return (
       <>
+        <Helmet>
+          <title>Blog Post Not Found | AlfoxAI</title>
+          <meta name="description" content="The blog post you're looking for doesn't exist." />
+          <meta name="robots" content="noindex, nofollow" />
+        </Helmet>
         <Banner page="Blog" />
         <div className="wrapper py-16">
           <div className="text-center py-16">
@@ -87,6 +93,11 @@ const BlogPost = () => {
   if (blogError) {
     return (
       <>
+        <Helmet>
+          <title>Error Loading Blog | AlfoxAI</title>
+          <meta name="description" content="There was an error loading the blog post." />
+          <meta name="robots" content="noindex, nofollow" />
+        </Helmet>
         <Banner page="Blog" />
         <div className="wrapper py-16">
           <div className="text-center py-16">
@@ -120,6 +131,10 @@ const BlogPost = () => {
   if (blogLoading) {
     return (
       <>
+        <Helmet>
+          <title>Loading Blog | AlfoxAI</title>
+          <meta name="robots" content="noindex, nofollow" />
+        </Helmet>
         <Banner page="Blog" />
         <div className="wrapper py-16">
           <div className="flex justify-center items-center py-20">
@@ -134,8 +149,51 @@ const BlogPost = () => {
     return null;
   }
 
+  // Prepare meta tags for the blog post
+  const metaTitle = blog.title ? `${blog.title} | AlfoxAI` : "Blog | AlfoxAI";
+  const metaDescription = blog.metaDescription || blog.excerpt || "Read our latest blog post on AlfoxAI";
+  const metaKeywords = blog.metaKeywords?.join(", ") || "";
+  const authorName = blog.author?.name || blog.authorId?.name || "AlfoxAI";
+  const publishDate = blog.publishDate ? new Date(blog.publishDate).toISOString() : "";
+  const categoryName = blog.categoryId?.name || "Technology";
+  const imageUrl = blog.imageUrl || "";
+
   return (
     <>
+      <Helmet>
+        <title>{metaTitle}</title>
+        <meta name="description" content={metaDescription} />
+        {metaKeywords && <meta name="keywords" content={metaKeywords} />}
+        <meta name="author" content={authorName} />
+        <meta name="robots" content="index, follow" />
+        
+        {/* Open Graph / Facebook */}
+        <meta property="og:type" content="article" />
+        <meta property="og:title" content={blog.title} />
+        <meta property="og:description" content={metaDescription} />
+        <meta property="og:image" content={imageUrl} />
+        <meta property="og:url" content={window.location.href} />
+        <meta property="og:site_name" content="AlfoxAI" />
+        {publishDate && <meta property="article:published_time" content={publishDate} />}
+        <meta property="article:author" content={authorName} />
+        <meta property="article:section" content={categoryName} />
+        
+        {/* Twitter */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={blog.title} />
+        <meta name="twitter:description" content={metaDescription} />
+        <meta name="twitter:image" content={imageUrl} />
+        
+        {/* Additional meta tags */}
+        <meta name="article:section" content={categoryName} />
+        {blog.tags && blog.tags.length > 0 && (
+          <meta name="article:tag" content={blog.tags.join(", ")} />
+        )}
+        
+        {/* Canonical URL */}
+        <link rel="canonical" href={window.location.href} />
+      </Helmet>
+
       <Banner page="Blog" />
 
       <div className="wrapper py-16">

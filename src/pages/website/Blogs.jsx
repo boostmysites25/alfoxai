@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
+import { Helmet } from "react-helmet";
 import Banner from "../../components/website/Banner";
 import { getBlogs } from "../../utils/api";
 
@@ -62,6 +63,11 @@ const Blogs = () => {
   if (error) {
     return (
       <>
+        <Helmet>
+          <title>Error Loading Blogs | AlfoxAI</title>
+          <meta name="description" content="There was an error loading the blog posts." />
+          <meta name="robots" content="noindex, nofollow" />
+        </Helmet>
         <Banner page="Our Blogs" />
         <div className="wrapper py-16">
           <div className="text-center py-16">
@@ -85,6 +91,28 @@ const Blogs = () => {
 
   return (
     <>
+      <Helmet>
+        <title>Our Blogs | AlfoxAI</title>
+        <meta name="description" content="Explore our latest insights, tutorials, and industry trends in web development, mobile apps, AI, and IoT technology." />
+        <meta name="keywords" content="blog, technology, web development, mobile apps, AI, IoT, software development, tech insights" />
+        <meta name="robots" content="index, follow" />
+        
+        {/* Open Graph / Facebook */}
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="Our Blogs | AlfoxAI" />
+        <meta property="og:description" content="Explore our latest insights, tutorials, and industry trends in web development, mobile apps, AI, and IoT technology." />
+        <meta property="og:url" content={window.location.href} />
+        <meta property="og:site_name" content="AlfoxAI" />
+        
+        {/* Twitter */}
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:title" content="Our Blogs | AlfoxAI" />
+        <meta name="twitter:description" content="Explore our latest insights, tutorials, and industry trends in web development, mobile apps, AI, and IoT technology." />
+        
+        {/* Canonical URL */}
+        <link rel="canonical" href={window.location.href} />
+      </Helmet>
+
       {/* Banner Section */}
       <Banner page="Our Blogs" />
 
